@@ -1,0 +1,5 @@
+rootProject.name = 'sampleApp'
+apply from: file("../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesSettingsGradle(settings)
+include ':app', ':react-native-mparticle'
+project(':react-native-mparticle').projectDir = new File(rootProject.projectDir, '../../../android')
+

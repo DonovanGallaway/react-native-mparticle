@@ -15,12 +15,14 @@
       "/sample"
     ]
   },
-  "dependencies": {},
   "peerDependencies": {
     "react": ">= 16.0.0-alpha.12",
     "react-native": ">= 0.45.0"
   },
   "devDependencies": {
+    "metro-react-native-babel-preset": "^0.53.1",
+    "react": "17.0.2",
+    "react-native": "0.65.1",
     "standard": "^8.6.0"
   }
 }
