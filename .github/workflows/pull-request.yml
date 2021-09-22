@@ -44,7 +44,7 @@ jobs:
 
   build-android:
     name: "Build Android Sample App"
-    runs-on: ubuntu-18.0.4
+    runs-on: ubuntu-18.04
     steps:
     - name: "Checkout"
       uses: actions/checkout@v2
