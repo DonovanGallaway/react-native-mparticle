@@ -5,21 +5,19 @@ on:
 
 jobs:
   build-js:
-    name: "Build JS"
+    name: "Run React JS Tests"
     runs-on: macOS-latest
     steps:
-    - name: Checkout
+    - name: "Checkout"
       uses: actions/checkout@v2
     - uses: actions/setup-node@master
     - uses: c-hive/gha-yarn-cache@v1
 
-    - name: Install node modules
-      run: |
-        yarn install
+    - name: "Install node modules"
+      run: yarn install
         
-    - name: Run test
-      run: |
-        yarn test
+    - name: "Run React Tests"
+      run: yarn test
   build-ios:
     name: "Build iOS Sample App"
     runs-on: macOS-latest
@@ -61,6 +59,8 @@ jobs:
       run: npm install; yarn install
 
     - name: "Android Build"
+      working-directory: sample/android
+      run: ./gradlew assembleDebug
 
   android-unit-tests:
     name: "Run Android Unit Tests"
@@ -70,4 +70,5 @@ jobs:
         uses: actions/checkout@v2
       
       - name: Run Android Unit Tests
-        run: echo "pwd"; pwd; echo "ls:"; ls; cd android; ./gradlew test
+        working-directory: android
+        run: ./gradlew test
