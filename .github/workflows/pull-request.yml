@@ -29,20 +29,38 @@ jobs:
     - uses: actions/setup-node@master
     - uses: c-hive/gha-yarn-cache@v1
 
-    - name: Install Node Modules
+    - name: "Install Node Modules"
       run: npm install; yarn install
 
-    - name: Install Node Modules, Sample App
+    - name: "Install Node Modules, Sample App"
       working-directory: sample
       run: npm install; yarn install
 
-    - name: Install Pods, Sample App
+    - name: "Install Pods, Sample App"
       working-directory: sample/ios
       run: pod install
 
-    - name: XCode build
+    - name: "XCode build"
       working-directory: sample/ios
       run: xcodebuild -allowProvisioningUpdates -workspace sampleApp.xcworkspace -scheme sampleApp -destination 'platform=iOS Simulator,name=iPhone 11,OS=latest'
+
+  build-android:
+    name: "Build Android Sample App"
+    runs-on: ubuntu-18.0.4
+    steps:
+    - name: "Checkout"
+      uses: actions/checkout@v2
+    - uses: actions/setup-node@master
+    - uses: c-hive/gha-yarn-cache@v1
+
+    - name: "Install Node Modules"
+      run: npm install; yarn install
+
+    - name: "Install Node Modules, Sample App"
+      working-directory: sample
+      run: npm install; yarn install
+
+    - name: "Android Build"
 
   android-unit-tests:
     name: "Run Android Unit Tests"
